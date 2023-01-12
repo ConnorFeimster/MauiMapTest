@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="MapTestStuff.Views.MapTest"
+             Title="MapTest">
+    <VerticalStackLayout>
+        <Button Text="Add Pin"
+                Command="{Binding AddPinCommand}"
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="End"
+                Margin="20,10"
+                BackgroundColor="{DynamicResource Secondary}"
+                BorderColor="{DynamicResource Tertiary}"
+                BorderWidth="2"
+                TextColor="Black"
+                IsVisible="True"/>
+
+        <!--<maps:Map x:Name="map"
+                  HeightRequest="600">
+        </maps:Map>-->
+
+        <maps:Map x:Name="map"
+                  HeightRequest="600"
+                  ItemsSource="{Binding MapPositions}">
+            <maps:Map.ItemTemplate>
+                <DataTemplate>
+                    <maps:Pin Location="{Binding Location}"
+                              Label="A label"
+                              Type="Generic"/>
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
+        </maps:Map>
+    </VerticalStackLayout>
+</ContentPage>
